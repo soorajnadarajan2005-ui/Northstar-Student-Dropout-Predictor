@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Northstar | Student success intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" href="/static/enhancements.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-mark">N</span><span>northstar</span></div>
+      <nav><a class="active" href="#overview"><span>◈</span> Overview</a><a href="#predict"><span>⌁</span> New prediction</a><a href="#students"><span>◌</span> Students</a></nav>
+      <div class="sidebar-foot"><span class="status-dot"></span><span>Model online<br><small>Updated just now</small></span></div>
+    </aside>
+    <main>
+      <header class="topbar"><div><p class="eyebrow">MONDAY, SEPTEMBER 14, 2026 <span class="live-pill"><i></i> LIVE</span></p><h1>Student success overview</h1></div><div class="top-actions"><button class="icon-button" id="export-button" title="Download assessment history">↓ <span>Export</span></button><div class="avatar">AK</div></div></header>
+      <section class="summary-grid" id="overview">
+        <article class="stat-card dark"><div class="stat-label">Students monitored <span>↗</span></div><strong id="students-count">--</strong><p>Current training cohort</p><div class="sparkline"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+        <article class="stat-card"><div class="stat-label">Elevated risk <span class="amber">●</span></div><strong id="risk-rate">--</strong><p class="muted" id="risk-count">Loading cohort signal...</p><div class="progress"><span id="risk-progress"></span></div></article>
+        <article class="stat-card"><div class="stat-label">Balanced accuracy <span class="green">●</span></div><strong id="model-accuracy">--</strong><p class="muted">Accounts for both classes</p><div class="mini-bars"><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+      </section>
+      <section class="workspace" id="predict">
+        <div class="panel form-panel"><div class="panel-heading"><div><p class="eyebrow">PREDICTIVE CHECK-IN</p><h2>Assess a student</h2></div><span class="step">01 / 01</span></div><p class="panel-intro">Enter the latest signals to estimate dropout risk and identify where support can make the biggest difference.</p>
+          <form id="prediction-form"><label>Student name<input name="student_name" placeholder="e.g. Maya Chen" required></label><div class="field-grid"><label>Attendance <span>%</span><input type="number" name="attendance" min="0" max="100" value="78" required></label><label>Study hours / week<input type="number" name="study_hours" min="0" max="40" value="12" required></label><label>Previous grade <span>%</span><input type="number" name="previous_grade" min="0" max="100" value="72" required></label><label>Assignment completion <span>%</span><input type="number" name="assignment_completion" min="0" max="100" value="80" required></label><label>Support level <span>1–5</span><input type="number" name="support_level" min="1" max="5" value="3" required></label><label>Absences this term<input type="number" name="absences" min="0" max="40" value="4" required></label></div><button type="submit">Run risk assessment <span>→</span></button></form>
+        </div>
+        <div class="panel result-panel"><div class="panel-heading"><div><p class="eyebrow">LATEST RESULT</p><h2 id="result-title">Ready when you are</h2></div><span class="result-icon">✦</span></div><div class="result-empty" id="result-empty"><div class="orbit">✦</div><p>Your assessment will appear here.</p><small>Risk is calculated from six academic and engagement signals.</small></div><div class="result-content hidden" id="result-content"><div class="risk-ring"><span id="risk-percent">0%</span><small>risk score</small></div><div class="result-summary"><span class="risk-badge" id="risk-badge">LOW RISK</span><h3 id="recommendation">Keep supporting this student</h3><p id="result-copy">The current signals suggest a healthy trajectory.</p><div class="confidence"><span>Model confidence</span><strong id="confidence-value">--</strong></div></div></div><div class="action-box hidden" id="action-box"><span>Suggested next step</span><strong id="recommended-action"></strong></div></div>
+      </section>
+      <section class="insights-grid"><div class="panel insights-panel"><div class="panel-heading"><div><p class="eyebrow">MODEL INSIGHT</p><h2>What shapes risk?</h2></div><span class="muted">Relative importance</span></div><div class="feature-list" id="feature-list"><div class="loading-line"></div><div class="loading-line"></div><div class="loading-line"></div></div></div><div class="panel guardrail-panel"><div class="panel-heading"><div><p class="eyebrow">DECISION SUPPORT</p><h2>Use with care</h2></div><span class="shield">✓</span></div><p>This score is an early signal, not a verdict. Pair it with context from the student, family, and support team before taking action.</p><div class="quality-row"><span>ROC AUC</span><strong id="roc-auc">--</strong></div><div class="quality-row"><span>Training records</span><strong id="trained-on">--</strong></div></div></section>
+      <section class="panel recent-panel" id="students"><div class="panel-heading"><div><p class="eyebrow">ACTIVITY</p><h2>Recent assessments</h2></div><span class="muted" id="assessment-count">Live from local database</span></div><div class="table-wrap"><table><thead><tr><th>Student</th><th>Risk level</th><th>Probability</th><th>Assessed</th></tr></thead><tbody id="recent-body"><tr><td colspan="4" class="muted">No assessments yet.</td></tr></tbody></table></div></section>
+    </main>
+  </div>
+  <script src="/static/script.js"></script>
+</body>
+</html>
